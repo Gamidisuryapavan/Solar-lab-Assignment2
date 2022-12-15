@@ -15,6 +15,9 @@ def get_details(request,country_name):
 
     for c in range(len(infobox_data)):
         th_data=infobox_data[c].find('th')
+        if (th_data!=None and th_data.get_text()=="Capitaland largest city"):
+            capitals = [i.get('title') for i in infobox_data[c].find_all('a') if i.get('title') is not None]
+            large_cities=capitals
 
         if (th_data!=None and th_data.get_text()=="Capital"):
             capitals = [i.get('title') for i in infobox_data[c].find_all('a') if i.get('title') is not None]
